@@ -2,7 +2,7 @@
 import express = require('express');
 import path = require('path');
 
-import routes from './routes/index';
+import routes from './routes/partaker';
 import users from './routes/user';
 import partakers from './routes/partaker';
 

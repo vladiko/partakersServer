@@ -2,7 +2,7 @@
 const router = express.Router();
 
 router.get('/', (req: express.Request, res: express.Response) => {
-    res.send("respond with a resource from partake dd r");
+    res.send("respond with a resource from partake ddr");
 });
 
 export default router;

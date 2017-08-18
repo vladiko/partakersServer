@@ -10,8 +10,10 @@
     "name": "Nata"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
     "debug": "^2.2.0",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "method-override": "^2.3.9"
   },
   "engines": {
     "node": "~6.10.x"

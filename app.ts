@@ -1,5 +1,9 @@
 ﻿import debug = require('debug');
 import express = require('express');
+import bodyParser = require('body-parser');
+import methodOverride = require('method-override');
+
+
 import path = require('path');
 
 import routes from './routes/partaker';
@@ -8,6 +12,11 @@ import partakers from './routes/partaker';
 
 
 var app = express();
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+app.use(methodOverride());
 
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {

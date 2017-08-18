@@ -18,4 +18,12 @@ router.post('/', (req: express.Request, res: express.Response) => {
     //res.json(retObj);
 });
 
+router.delete('/', (req: express.Request, res: express.Response) => {
+    //public firstName: string, public lastName: string
+    partakerService.partakerService.removePartaker(req.body);
+    res.json(req.body);
+    //let retObj = [{ firstName: 'Tania', lastName: 'Borisova' }];
+    //res.json(retObj);
+});
+
 export default router;

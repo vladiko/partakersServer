@@ -2,21 +2,24 @@
 import express = require('express');
 import bodyParser = require('body-parser');
 import methodOverride = require('method-override');
+import mongoose = require('./services/mongoose.service');
+
 
 
 import path = require('path');
-
 import routes from './routes/partaker';
 import users from './routes/user';
 import partakers from './routes/partaker';
 
-
+mongoose.configureMongoose();
 var app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+
+app.set('view engine', 'html');
 
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
@@ -43,11 +46,12 @@ app.use(function (req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use((err: any, req, res, next) => {
-        res.status(err['status'] || 500);
-        res.render('error', {
+        res.status(err.status || 500);
+        res.send({
             message: err.message,
             error: err
         });
+        return;
     });
 }
 
@@ -55,10 +59,11 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use((err: any, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.send({
         message: err.message,
-        error: {}
+        error: err
     });
+    return;
 });
 
 app.set('port', process.env.PORT || 3000);

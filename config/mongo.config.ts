@@ -1,0 +1,1 @@
+export const conectionUrl = 'mongodb://vstrecha:vstrecha@koganx.cloudapp.net:27017/vstrecha';

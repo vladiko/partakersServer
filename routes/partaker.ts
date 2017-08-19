@@ -3,27 +3,10 @@ import partakerService = require('../services/partakers.service');
 const router = express.Router();
 
 
-router.get('/', (req: express.Request, res: express.Response) => {
-    //public firstName: string, public lastName: string
-    //let retObj = [{ firstName: 'Tania', lastName: 'Borisova' }];
-    let retObj = partakerService.partakerService.getPartakers();
-    res.json(retObj);
-});
+router.get('/', partakerService.partakerService.getPartakers);
 
-router.post('/', (req: express.Request, res: express.Response) => {
-    //public firstName: string, public lastName: string
-    partakerService.partakerService.addPartaker(req.body);
-    res.json(req.body);
-    //let retObj = [{ firstName: 'Tania', lastName: 'Borisova' }];
-    //res.json(retObj);
-});
+router.post('/', partakerService.partakerService.addPartaker);
 
-router.delete('/', (req: express.Request, res: express.Response) => {
-    //public firstName: string, public lastName: string
-    partakerService.partakerService.removePartaker(req.body);
-    res.json(req.body);
-    //let retObj = [{ firstName: 'Tania', lastName: 'Borisova' }];
-    //res.json(retObj);
-});
+router.delete('/', partakerService.partakerService.removePartaker);
 
 export default router;
